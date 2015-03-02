@@ -67,7 +67,7 @@ void Sign(const FunctionCallbackInfo<Value>& args) {
   // Reading public key
   Local<Object> sec = args[1]->ToObject();
   const u8* seck = static_cast<u8*>(sec->GetIndexedPropertiesExternalArrayData());
-  
+
   u8* sm;
   u64 smlen = 0;
 
@@ -88,8 +88,8 @@ void Sign(const FunctionCallbackInfo<Value>& args) {
 }
 
 void Init(Handle<Object> exports) {
+  NODE_SET_METHOD(exports, "sign", Sign);
   NODE_SET_METHOD(exports, "verify", Verify);
-  NODE_SET_METHOD(exports, "sign", Verify);
 }
 
 NODE_MODULE(nacl, Init)
