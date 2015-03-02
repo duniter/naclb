@@ -21,8 +21,9 @@ using namespace v8;
 * arg1 (Uint8Array): signature to check message against
 * arg2 (Uint8Array): public key to use for verification
 */
-Handle<Value> Verify(const Arguments& args) {
-  HandleScope scope;
+void Verify(const FunctionCallbackInfo<Value>& args) {
+  Isolate* isolate = Isolate::GetCurrent();
+  HandleScope scope(isolate);
 
   // Reading clear message
   Local<Object> msg = args[0]->ToObject();
@@ -42,10 +43,10 @@ Handle<Value> Verify(const Arguments& args) {
   int res = crypto_sign_open(m,&mlen,sm,smlen,pubk);
   if (res == 0)
     // Good signature
-    return scope.Close(Boolean::New(true));
+    args.GetReturnValue().Set(Boolean::New(isolate, true));
   else
     // Wrong signature or error
-    return scope.Close(Boolean::New(false));  
+    args.GetReturnValue().Set(Boolean::New(isolate, false));
 }
 
 /**
@@ -54,8 +55,9 @@ Handle<Value> Verify(const Arguments& args) {
 * arg0 (Uint8Array): clear message to be signed
 * arg1 (Uint8Array): sec key to use for verification
 */
-Handle<Value> Sign(const Arguments& args) {
-  HandleScope scope;
+void Sign(const FunctionCallbackInfo<Value>& args) {
+  Isolate* isolate = Isolate::GetCurrent();
+  HandleScope scope(isolate);
 
   // Reading clear message
   Local<Object> msg = args[0]->ToObject();
@@ -75,21 +77,19 @@ Handle<Value> Sign(const Arguments& args) {
   crypto_sign(sm,&smlen,m,mlen,seck);
 
   // Result
-  Local<Value> size = Integer::NewFromUnsigned(smlen);
-  Local<Object> array = Array::New(size->IntegerValue());
+  Local<Value> size = Integer::NewFromUnsigned(isolate, smlen);
+  Local<Object> array = Array::New(isolate, size->IntegerValue());
 
   for (int i = 0; i < size->IntegerValue(); i++) {
-    array->Set(i, Integer::NewFromUnsigned(sm[i]));
+    array->Set(i, Integer::NewFromUnsigned(isolate, sm[i]));
   }
 
-  return scope.Close(array);
+  args.GetReturnValue().Set(array);
 }
 
 void Init(Handle<Object> exports) {
-  exports->Set(String::NewSymbol("verify"),
-      FunctionTemplate::New(Verify)->GetFunction());
-  exports->Set(String::NewSymbol("sign"),
-      FunctionTemplate::New(Sign)->GetFunction());
+  NODE_SET_METHOD(exports, "verify", Verify);
+  NODE_SET_METHOD(exports, "sign", Verify);
 }
 
 NODE_MODULE(nacl, Init)
