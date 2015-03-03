@@ -1,4 +1,4 @@
-var addon  = require('bindings')('nacl');
+var addon  = require('./');
 var nacl   = require('tweetnacl');
 var base58 = require('./base58');
 var assert = require('assert');
@@ -27,7 +27,7 @@ for (i = 0; i < crypto_sign_BYTES; i++) sm[i] = sig[i];
 for (i = 0; i < msg.length; i++) sm[i+crypto_sign_BYTES] = msg[i];
 
 var longMessage  = '01234567890123456789012345678901234567890123456789012345678912345'; // 65 chars
-var shortMessage = '0123456789012345678901234567890123456789012345678901234567891234'; // 64 chars
+var shortMessage = '0123';
 
 describe('Crypto', function() {
 
@@ -38,12 +38,12 @@ describe('Crypto', function() {
   it('should success on sign of more than 64 characters', function() {
     var sig = signSync(longMessage, sec);
     assert.equal(verifySync(longMessage, sig, rawPub), true);
-  })
+  });
 
-  //it('should success on sign less than 64 characters', function() {
-  //  var sig = signSync(shortMessage, sec);
-  //  assert.equal(verifySync(shortMessage, sig, rawPub), true);
-  //})
+  it('should success on sign less than 64 characters', function() {
+    var sig = signSync(shortMessage, sec);
+    assert.equal(verifySync(shortMessage, sig, rawPub), true);
+  });
 });
 
 function signSync(msg, sec) {

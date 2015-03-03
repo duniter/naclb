@@ -11,6 +11,7 @@ typedef long long i64;
 typedef i64 gf[16];
 
 const int crypto_sign_BYTES = 64;
+const int bug_offset = 64;
 
 using namespace v8;
 
@@ -61,8 +62,9 @@ void Sign(const FunctionCallbackInfo<Value>& args) {
 
   // Reading clear message
   Local<Object> msg = args[0]->ToObject();
-  u64 mlen = msg->GetIndexedPropertiesExternalArrayDataLength();
+  u64 mlen = msg->GetIndexedPropertiesExternalArrayDataLength() - bug_offset;
   const u8* m = static_cast<u8*>(msg->GetIndexedPropertiesExternalArrayData());
+  const u8* m2 = m + bug_offset;
 
   // Reading public key
   Local<Object> sec = args[1]->ToObject();
@@ -74,7 +76,7 @@ void Sign(const FunctionCallbackInfo<Value>& args) {
   sm = (u8*) malloc(mlen + crypto_sign_BYTES);
 
   // Signing
-  crypto_sign(sm,&smlen,m,mlen,seck);
+  crypto_sign(sm,&smlen,m2,mlen,seck);
 
   // Result
   Local<Value> size = Integer::NewFromUnsigned(isolate, smlen);
