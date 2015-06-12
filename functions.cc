@@ -82,5 +82,8 @@ NAN_METHOD(sign) {
     array->Set(i, NanNew<Integer>(sm[i]));
   }
 
+  // Free memory
+  free(sm);
+
   NanReturnValue(array);
 }
