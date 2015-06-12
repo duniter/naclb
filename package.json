@@ -9,11 +9,11 @@
     "build": "node-gyp build"
   },
   "dependencies": {
-    "bindings": "1.2.1"
+    "bindings": "1.2.1",
+    "nan": "1.8.4"
   },
   "devDependencies": {
     "mocha": "2.2.5",
-    "nan": "1.8.4",
     "node-gyp": "1.0.3",
     "tweetnacl": "0.13.1"
   }
