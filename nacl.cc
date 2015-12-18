@@ -6,14 +6,13 @@ using v8::FunctionTemplate;
 using v8::Handle;
 using v8::Object;
 using v8::String;
+using Nan::GetFunction;
+using Nan::New;
+using Nan::Set;
 
-void InitAll(Handle<Object> exports) {
-
-  exports->Set(NanNew<String>("verify"),
-    NanNew<FunctionTemplate>(verify)->GetFunction());
-
-  exports->Set(NanNew<String>("sign"),
-    NanNew<FunctionTemplate>(sign)->GetFunction());
+NAN_MODULE_INIT(InitAll) {
+  Set(target, New<String>("verify").ToLocalChecked(), GetFunction(New<FunctionTemplate>(verify)).ToLocalChecked());
+  Set(target, New<String>("sign").ToLocalChecked(), GetFunction(New<FunctionTemplate>(sign)).ToLocalChecked());
 }
 
 NODE_MODULE(nacl, InitAll)
