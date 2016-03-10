@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Node.js Addon for NaCl Binding",
   "main": "index.js",
+  "engines": {
+    "node": ">=4.2.0",
+    "npm": ">=2.11"
+  },
   "scripts": {
     "test": "node_modules/mocha/bin/mocha tests/",
     "configure": "node-gyp configure",
