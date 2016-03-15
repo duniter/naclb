@@ -1,6 +1,10 @@
 environment:
   matrix:
     - nodejs_version: "5.8.0"
+  node_pre_gyp_accessKeyId:
+    secure: p2BcCi3HR3SnrUwqzFHbJK3slT4FGBc+F9iRy7a6Los=
+  node_pre_gyp_secretAccessKey:
+    secure: 6C95HM2rlmtHtyp0FwOH/cjxViVNA3RuAJMh9S/xOyREiBfo8TPFrTTFM1+BmW2l
 
 platform:
   - x64
@@ -14,5 +18,6 @@ install:
 test_script:
   - npm test
 
-build: off
-deploy: off
+on_success:
+  - ps: if($env:APPVEYOR_REPO_COMMIT_MESSAGE.ToLower().Contains('v1.2.1')) { node-pre-gyp --msvs_version=2013 package }
+  - ps: if($env:APPVEYOR_REPO_COMMIT_MESSAGE.ToLower().Contains('v1.2.1')) { node-pre-gyp --msvs_version=2013 publish }
