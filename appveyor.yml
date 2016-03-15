@@ -22,5 +22,5 @@ build: off
 deploy: off
 
 on_success:
-  - ps: if($env:APPVEYOR_REPO_COMMIT_MESSAGE.ToLower().Contains('v1.2.2')) { node "node_modules/node-pre-gyp/bin/node-pre-gyp" --msvs_version=2013 package }
-  - ps: if($env:APPVEYOR_REPO_COMMIT_MESSAGE.ToLower().Contains('v1.2.2')) { node "node_modules/node-pre-gyp/bin/node-pre-gyp" --msvs_version=2013 publish }
+  - ps: if($env:APPVEYOR_REPO_COMMIT_MESSAGE.ToLower().Contains('v1.2.3')) { node node_modules\node-pre-gyp\bin\node-pre-gyp --msvs_version=2013 package }
+  - ps: if($env:APPVEYOR_REPO_COMMIT_MESSAGE.ToLower().Contains('v1.2.3')) { node node_modules\node-pre-gyp\bin\node-pre-gyp --msvs_version=2013 publish }
