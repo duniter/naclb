@@ -1,7 +1,10 @@
 // Exposes 2 methods: verify(msg, sig, pub), sign(msg, sec)
 module.exports = new function() {
 
-  var binding = require('bindings')('nacl');
+  var binary = require('node-pre-gyp');
+  var path = require('naclb');
+  var binding_path = binary.find(path.resolve(path.join(__dirname,'./package.json')));
+  var binding = require(binding_path);
 
   this.verify = binding.verify;
 

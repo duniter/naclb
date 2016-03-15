@@ -12,7 +12,6 @@
     "install": "node-pre-gyp install --fallback-to-build"
   },
   "dependencies": {
-    "bindings": "1.2.1",
     "nan": "2.1.0",
     "node-pre-gyp": "0.6.23"
   },
