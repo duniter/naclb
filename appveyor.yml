@@ -2,6 +2,7 @@ environment:
   nodejs_version: "5.8.0"
 
 install:
+  - Install-Product node 5.8.0 x64
   - node -v
   - npm install
 
