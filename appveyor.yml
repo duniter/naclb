@@ -9,6 +9,9 @@ environment:
 platform:
   - x64
 
+init:
+  - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+
 install:
   - ps: Install-Product node $env:nodejs_version
   - node -v
@@ -24,3 +27,6 @@ deploy: off
 on_success:
   - ps: if($env:APPVEYOR_REPO_COMMIT_MESSAGE.ToLower().Contains('v1.2.3')) { node node_modules\node-pre-gyp\bin\node-pre-gyp --msvs_version=2013 package }
   - ps: if($env:APPVEYOR_REPO_COMMIT_MESSAGE.ToLower().Contains('v1.2.3')) { node node_modules\node-pre-gyp\bin\node-pre-gyp --msvs_version=2013 publish }
+
+on_finish:
+  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
