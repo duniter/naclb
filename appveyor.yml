@@ -18,6 +18,9 @@ install:
 test_script:
   - npm test
 
+build: off
+deploy: off
+
 on_success:
   - ps: if($env:APPVEYOR_REPO_COMMIT_MESSAGE.ToLower().Contains('v1.2.1')) { node-pre-gyp --msvs_version=2013 package }
   - ps: if($env:APPVEYOR_REPO_COMMIT_MESSAGE.ToLower().Contains('v1.2.1')) { node-pre-gyp --msvs_version=2013 publish }
