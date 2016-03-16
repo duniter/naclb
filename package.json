@@ -1,6 +1,6 @@
 {
   "name": "naclb",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "description": "Node.js Addon for NaCl Binding",
   "main": "index.js",
   "engines": {
