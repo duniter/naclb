@@ -16,5 +16,4 @@ addons:
 sudo: false
 install:
 - npm install
-- if [[ $TRAVIS_TAG =~ ^.+$ ]]; then node node_modules/node-pre-gyp/bin/node-pre-gyp
-  package publish fi
+- if [ $TRAVIS_TAG =~ ^.+$ ]; then node node_modules/node-pre-gyp/bin/node-pre-gyp package publish; fi
