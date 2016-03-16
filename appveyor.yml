@@ -6,13 +6,13 @@ environment:
   node_pre_gyp_region: eu-central-1
   matrix:
     - nodejs_version: "5.8.0"
-      platform: x64
 
 platform:
+  - x86
   - x64
 
 install:
-  - ps: Install-Product node $env:nodejs_version x64
+  - ps: Install-Product node $env:nodejs_version $env:platform
   - node -v
   - npm install -g npm
   - npm install
@@ -25,5 +25,5 @@ build: off
 deploy: off
 
 on_success:
-  - node node_modules\node-pre-gyp\bin\node-pre-gyp package
-  - node node_modules\node-pre-gyp\bin\node-pre-gyp publish
+  - ps: if($env:APPVEYOR_REPO_COMMIT_MESSAGE.ToLower().Contains('v1.2.4')) { node node_modules\node-pre-gyp\bin\node-pre-gyp package }
+  - ps: if($env:APPVEYOR_REPO_COMMIT_MESSAGE.ToLower().Contains('v1.2.4')) { node node_modules\node-pre-gyp\bin\node-pre-gyp publish }
