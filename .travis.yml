@@ -5,10 +5,9 @@ node_js:
   - 5.8.0
 
 env:
-  global:
-    - secure: "e/NNEYkXc5AChBN5awNrHNbTdVf6egwRUmynY3c+C0AAnV2M2oYAhZG7ULQGqaKqKhqB+dgxI5Hmr/BHCdSob9qHxI870BdXto3MzQUGx+/GNUPgQNYFivI6g5ofDcVrYi53Z0Dc/zgVmyprGWpeJmki9FVSjtAxUMfxDnXubgU="
-    - secure: "k+Q3qHaS3U2EHsETbVpCD2Ih1ullm0nJMHyltJsXNiTi9OSJz8MpuRhNI8/NS6v4z48Mc2et6iXxodwoPGZ6zBuD+BXhbCOQJ25i491ydA7EIIU79x4ICWBA/Zc049WnbHDUD4AYLMW/kbrm7A429xgrwFDDv1tQZaBy+n2W2W4="
-    - secure: "GeDC1+gqCrJiI/PLh5X61sTFTZyF1tQuq+ZOH+dnbj1mgilYgpS9wA8L3+O9JwTxMRFTbXKADfEsp9y3uUh5R5VqDw0azfmVAXMoSz/v+GDXFcU4YLazj/gjfZxbU68SB7CIKHcXnpQ48YGh+xmePxLSVLUre2jbhqC/5WShmo0="
+  - secure: "e/NNEYkXc5AChBN5awNrHNbTdVf6egwRUmynY3c+C0AAnV2M2oYAhZG7ULQGqaKqKhqB+dgxI5Hmr/BHCdSob9qHxI870BdXto3MzQUGx+/GNUPgQNYFivI6g5ofDcVrYi53Z0Dc/zgVmyprGWpeJmki9FVSjtAxUMfxDnXubgU="
+  - secure: "k+Q3qHaS3U2EHsETbVpCD2Ih1ullm0nJMHyltJsXNiTi9OSJz8MpuRhNI8/NS6v4z48Mc2et6iXxodwoPGZ6zBuD+BXhbCOQJ25i491ydA7EIIU79x4ICWBA/Zc049WnbHDUD4AYLMW/kbrm7A429xgrwFDDv1tQZaBy+n2W2W4="
+  - secure: "GeDC1+gqCrJiI/PLh5X61sTFTZyF1tQuq+ZOH+dnbj1mgilYgpS9wA8L3+O9JwTxMRFTbXKADfEsp9y3uUh5R5VqDw0azfmVAXMoSz/v+GDXFcU4YLazj/gjfZxbU68SB7CIKHcXnpQ48YGh+xmePxLSVLUre2jbhqC/5WShmo0="
   - CXX=g++-4.8
 
 addons:
