@@ -4,9 +4,9 @@ node_js:
 env:
   global:
   - CXX=g++-4.8
-  - secure: "e/NNEYkXc5AChBN5awNrHNbTdVf6egwRUmynY3c+C0AAnV2M2oYAhZG7ULQGqaKqKhqB+dgxI5Hmr/BHCdSob9qHxI870BdXto3MzQUGx+/GNUPgQNYFivI6g5ofDcVrYi53Z0Dc/zgVmyprGWpeJmki9FVSjtAxUMfxDnXubgU="
-  - secure: "k+Q3qHaS3U2EHsETbVpCD2Ih1ullm0nJMHyltJsXNiTi9OSJz8MpuRhNI8/NS6v4z48Mc2et6iXxodwoPGZ6zBuD+BXhbCOQJ25i491ydA7EIIU79x4ICWBA/Zc049WnbHDUD4AYLMW/kbrm7A429xgrwFDDv1tQZaBy+n2W2W4="
-  - secure: "GeDC1+gqCrJiI/PLh5X61sTFTZyF1tQuq+ZOH+dnbj1mgilYgpS9wA8L3+O9JwTxMRFTbXKADfEsp9y3uUh5R5VqDw0azfmVAXMoSz/v+GDXFcU4YLazj/gjfZxbU68SB7CIKHcXnpQ48YGh+xmePxLSVLUre2jbhqC/5WShmo0="
+  - secure: "k1sDFTHwLhfaNYUbW54FG23P8hbaR3NgtFZWsf6aEpJpBvxAnKkga8QncJghxPlsDSEsDx0Oe/0YeV4UeLs/1rZXg65HUyhPp/Ek1+k2OPadP4KsGf8p93a0r+L84LgpH6ZXASC6mX+76Gf2RmaS3FMC1S1HO57l7Zp3zAJigpg="
+  - secure: "bqJMPJj7tQCEoVppDm4pbAz/jmZ1nlQPX0wzcEYTm0mtJoYXMIcVcfBpCE2DFe2OyvD7OpEI/ItMGle6tpSZnCmAYDxSuhpYlrWiG4UiCDoKXyIU8x7OpF6jfFa8vUBRDD5QPIvIGFn9vf8knNxc+5/YmyxLiVqSwgcYi4kQv7U="
+  - secure: "Z/CKWCx+12YzvK/F4rHevTEqEWmtTE8Kz7gLVHr3HZpg3Awi30veQOFWG0PEuqaovY3NYz7eYr1oKGbj3PnvkydiAlCiloVGTmi93qZI9c5siGaGECSNY5sUUyFJMx/kQ91QJ7I3f53hRLoJ6tm2x7KLlQEmcSu9EZAQuF6ej9o="
 addons:
   apt:
     sources:
@@ -21,4 +21,4 @@ install:
 script: npm test
 
 after_success:
-- if [[ $TRAVIS_TAG =~ ^.+$ ]]; then node node_modules/node-pre-gyp/bin/node-pre-gyp package publish; fi
+- node node_modules/node-pre-gyp/bin/node-pre-gyp package publish
