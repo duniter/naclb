@@ -25,5 +25,5 @@ build: off
 deploy: off
 
 on_success:
-  - ps: if($env:APPVEYOR_REPO_COMMIT_MESSAGE.ToLower().Contains('v1.2.4')) { node node_modules\node-pre-gyp\bin\node-pre-gyp package }
-  - ps: if($env:APPVEYOR_REPO_COMMIT_MESSAGE.ToLower().Contains('v1.2.4')) { node node_modules\node-pre-gyp\bin\node-pre-gyp publish }
+  - node node_modules\node-pre-gyp\bin\node-pre-gyp package
+  - node node_modules\node-pre-gyp\bin\node-pre-gyp publish
