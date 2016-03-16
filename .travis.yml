@@ -22,4 +22,4 @@ sudo: false
 
 install:
   - npm install
-  - node node_modules/node-pre-gyp/bin/node-pre-gyp package publish
+  - [[ $TRAVIS_TAG =~ ^.+$ ]] && node node_modules/node-pre-gyp/bin/node-pre-gyp package publish
