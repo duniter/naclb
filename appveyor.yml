@@ -18,6 +18,9 @@ install:
   - npm install
   - node node_modules\node-pre-gyp\bin\node-pre-gyp info
 
+   # Check if new tag released and publish binary in this case.
+  - SET PUBLISH_BINARY=%APPVEYOR_REPO_TAG%
+
 test_script:
   - npm test
 
@@ -25,5 +28,5 @@ build: off
 deploy: off
 
 on_success:
-  - node node_modules\node-pre-gyp\bin\node-pre-gyp package
-  - node node_modules\node-pre-gyp\bin\node-pre-gyp publish
+  - IF %PUBLISH_BINARY% == true (node node_modules\node-pre-gyp\bin\node-pre-gyp package)
+  - IF %PUBLISH_BINARY% == true (node node_modules\node-pre-gyp\bin\node-pre-gyp publish)
