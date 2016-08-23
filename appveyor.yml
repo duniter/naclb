@@ -5,6 +5,7 @@ environment:
     secure: 6C95HM2rlmtHtyp0FwOH/cjxViVNA3RuAJMh9S/xOyREiBfo8TPFrTTFM1+BmW2l
   node_pre_gyp_region: eu-central-1
   matrix:
+    - nodejs_version: "4.5.0"
     - nodejs_version: "5.8.0"
 
 platform:
@@ -27,5 +28,5 @@ build: off
 deploy: off
 
 on_success:
-  - IF %PUBLISH_BINARY% == true (node node_modules\node-pre-gyp\bin\node-pre-gyp package)
-  - IF %PUBLISH_BINARY% == true (node node_modules\node-pre-gyp\bin\node-pre-gyp publish)
+  - node node_modules\node-pre-gyp\bin\node-pre-gyp package
+  - node node_modules\node-pre-gyp\bin\node-pre-gyp publish
