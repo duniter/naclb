@@ -28,5 +28,5 @@ build: off
 deploy: off
 
 on_success:
-  - node node_modules\node-pre-gyp\bin\node-pre-gyp package
-  - node node_modules\node-pre-gyp\bin\node-pre-gyp publish
+  - IF %PUBLISH_BINARY% == true (node node_modules\node-pre-gyp\bin\node-pre-gyp package)
+  - IF %PUBLISH_BINARY% == true (node node_modules\node-pre-gyp\bin\node-pre-gyp publish)
