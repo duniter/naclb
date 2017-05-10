@@ -19,3 +19,12 @@ install:
 
 
 script: npm test
+deploy:
+  - provider: npm
+    email: cem.moreau@gmail.com
+    skip_cleanup: true
+    api_key:
+      secure: PsbNKwdtzhlOveL7vPQ4T2mBzDiijqV46A6ISsRgqMyfXO/sC3E/mVWN2y2wZeiK6OXRASeT3UPw2jZ/01DKcvuIP301T6Yv4tO2hSGSjnhJvKZUDjPsvKAyHJRMbWU2mPkc2QM9bt8yW0BtXGeYsmyoVMNygx3kI+blZxZs0Pw=
+    on:
+      tags: true
+      repo: duniter/naclb
