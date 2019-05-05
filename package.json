@@ -15,7 +15,9 @@
   },
   "scripts": {
     "test": "node \"node_modules/mocha/bin/mocha\" tests/",
-    "install": "node-pre-gyp install --fallback-to-build"
+    "install": "node-pre-gyp install --fallback-to-build",
+    "package": "node-pre-gyp package",
+    "publish": "node-pre-gyp publish"
   },
   "repository": {
     "type": "git",
